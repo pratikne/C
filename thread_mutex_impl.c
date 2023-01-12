@@ -14,7 +14,7 @@ pthread_t tid[2];
 int counter;
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
-void *trythis(void *arg)
+void* trythis(void* arg)
 {
     pthread_mutex_lock(&lock);
 
@@ -22,7 +22,7 @@ void *trythis(void *arg)
     counter += 1;
     printf("\n Job %d has started\n", counter);
 
-    for (i = 0; i < (0xFFFFFFFF); i++); //DO nothing..just loop for sometime
+    for (i = 0; i < 100000; i++); //DO nothing..just loop for sometime
 
     printf("\n Job %d has finished\n", counter);
 
@@ -54,8 +54,17 @@ int main(void)
         i++;
     }
 
-    pthread_join(tid[0], NULL);
-    pthread_join(tid[1], NULL);
+    // pthread_join(tid[0], NULL);
+    // pthread_join(tid[1], NULL);
+    i = 0;
+    while (i < 2)
+    {
+        error = pthread_join(tid[i], NULL);
+        if (error != 0)
+            printf("\nThread can't be created :[%s]",
+                   strerror(error));
+        i++;
+    }
     pthread_mutex_destroy(&lock);
 
     return 0;

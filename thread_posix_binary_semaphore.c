@@ -2,7 +2,7 @@
 //Threads can use to synchronize their actions: mutexes and condition variables
 //Mutex is a locking mechanism
 //Semaphore is signaling mechanism
-
+//Semaphore ia basically an unsigned int and changes done to it is atomic
 //Below is the implementation of binary semaphore which acts like mutex
 
 #include <pthread.h> //IMP
@@ -27,12 +27,12 @@ void* trythis(void* arg)
     printf("\nThread [%d] Job %d has started\n", *t, counter);
 
     for (i = 0; i < (0xFFFFFFFF); i++)
-        ;
+    ;
 
     printf("\nThread [%d] Job %d has finished\n", *t, counter);
 
     //pthread_mutex_unlock(&lock);
-    sem_post(&sema);
+    sem_post(&sema); //same as signal
 
     return NULL;
 }
@@ -48,7 +48,8 @@ int main(void)
         return 1;
     }**/
     // int sem_init(sem_t *sem, int pshared, unsigned int value)
-    // pshared if 0 -> Threads, Non 0 -> process
+    // IMP ->npshared if == 0 -> Threads, 
+    //                   != 0 -> process 
     // Unnamed semaphore
     sem_init(&sema,0,1);
 

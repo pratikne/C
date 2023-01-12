@@ -59,7 +59,7 @@ int main()
     // Create thread 1
     pthread_create(&tid1, NULL, foo, (void*)&tid1);
  
-    // sleep for 1 sec so that thread 1
+    // sleep for 5 sec so that thread 1
     // would get a chance to run first
     sleep(5);
  

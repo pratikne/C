@@ -18,14 +18,7 @@ struct sockaddr {
     char              sa_data[14];  // 14 bytes of protocol address
 };
 **/
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2022-09-02
- * 
- * @copyright Copyright (c) 2022
- * 
- */
+
 #include <stdio.h>
 #include <netdb.h>
 #include <netinet/in.h>

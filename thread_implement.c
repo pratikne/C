@@ -9,7 +9,7 @@
  
 // A normal C function that is executed as a thread
 // when its name is specified in pthread_create()
-void *myThreadFun(void *vargp)
+void* myThreadFun(void* vargp)
 {
     sleep(5);
     printf("Printing GeeksQuiz from Thread \n");
@@ -81,5 +81,4 @@ int main(int argc, char* argv[])
         pthread_join(tid[i],NULL); //waits for the thread identified by thread to terminate
     }
     pthread_exit(NULL); //terminates the calling thread
-    return 0;
 }

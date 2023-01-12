@@ -38,6 +38,6 @@ int main(int argc, char* argv[])
     if (s != 0)
         printf("pthread_join error");
 
-    printf("Thread returned %ld\n", (long*) res);
+    printf("Thread returned %ld\n", (long*)res);
     exit(EXIT_SUCCESS);
 }

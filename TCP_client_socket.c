@@ -16,8 +16,9 @@ int main(int argc , char *argv[])
 		printf("Could not create socket");
 	}
 		
-	server.sin_addr.s_addr = inet_addr("74.125.235.20");
+	//Prepare the sockaddr_in structure
 	server.sin_family = AF_INET;
+	server.sin_addr.s_addr = inet_addr("74.125.235.20");
 	server.sin_port = htons( 80 );
 
 	//Connect to remote server

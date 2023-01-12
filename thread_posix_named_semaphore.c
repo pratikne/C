@@ -52,7 +52,7 @@ int main(void)
     int error;
     int i = 0;
 
-    sem = sem_open(SEM_MUTEX_NAME, O_CREAT , 0660, 1); //currentky giving error due to MINGW
+    sem = sem_open(SEM_MUTEX_NAME, IPC_CREATE , 0660, 1); //currentky giving error due to MINGW
     if(sem == SEM_FAILED){
         printf("Error");
         perror("sem_open");

@@ -2,6 +2,7 @@
 // #include<windows.h>
 #include<time.h>
 #include<stdlib.h>
+#include<string.h>
 
 #define KRESET  "\x1B[0m"
 #define KRED  "\x1B[31m"
@@ -16,19 +17,32 @@ int main()
 {
     int x = 10;
     int *p = NULL; //NULL Pointer
-    int *q ;//Wild pointer (Uninitialized, so pointing to any memory address since garbage value is stored)
-    void *r ;//Void pointer - contains any block address so called generic pointer
+
+    int *q ;//Wild pointer (Uninitialized pointer, so pointing to any memory address since garbage value is stored)
+    //pointer may be initialized to a non NULL garbage value that may not be a valid address
+
+    void *r;//Void pointer - can contains any block address so called generic pointer type
     r = &x;
     q = (int*)r; //r is typecasted from void to int and stored in int pointer which can be accessed
     r = NULL;
     printf("%d\n",*q);
+
+    //New block
     {
         int y = 20;
         q = &y;
-        printf("%d\n",*q);
-        printf("%d\n",q); //6422004
+        printf("%d\n",*q); //20
+        printf("%d\n",q);  //6422004
         q = NULL; //to solve dangling error ..we can also make y as static variable 
     }
+    int* arr = new int[10];
+    delete[] arr;
+    // Now arr is a dangling pointer too,
+    arr = NULL; //not a dangling pointer now
+    
+    //The pointers pointing to a deallocated memory block are known as Dangling Pointers.
+    //More info : https://www.scaler.com/topics/c/dangling-pointer-in-c/
+    
     //y is destroyed as soon as above block is finished
     //q is still pointing to that same address where y was but that is not valid. hence called dangling 
     // q++;

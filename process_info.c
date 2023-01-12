@@ -29,7 +29,7 @@ int main() {
    if (pid == 0) {
       printf("This is child process\n");
       mypid = getpid();
-      sleep(10);
+      sleep(10);yy
       //myppid = getppid();
       printf("Process id is %d and PPID is %d\n", mypid, myppid);
       exit(5);

@@ -8,7 +8,7 @@ int main()
 {
 
     // Declare the file pointer
-    FILE *filePointer;
+    FILE* filePointer;
 
     // Get the data to be written in file
     char dataToBeWritten[50] = "GeeksforGeeks-A Computer Science Portal for Geeks";
@@ -28,7 +28,7 @@ int main()
     {
 
         printf("The file is now opened.\n");
-        while (fgets(dataToBeRead, 50, filePointer) != NULL)
+        while (fgets(dataToBeRead,sizeof(dataToBeRead), filePointer) != NULL)
         {
 
             // Print the dataToBeRead
